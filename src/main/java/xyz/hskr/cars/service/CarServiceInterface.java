@@ -2,13 +2,11 @@ package xyz.hskr.cars.service;
 
 import java.util.List;
 
-public interface CarsInterface<T> {
+public interface CarServiceInterface<T> {
 	
 	T create(T myT);
 	
-	List<T> readAll();
-	
-	T readOne(Long id);
+	T readItem(Long id);
 	
 	T update(Long id, T y);
 	
