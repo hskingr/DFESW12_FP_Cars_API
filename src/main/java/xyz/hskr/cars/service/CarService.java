@@ -32,13 +32,13 @@ public class CarService implements CarServiceInterface<Car> {
 
 	@Override
 	public Car update(Long id, Car myCar) {
-		myCarRepo.findById(id).ifPresent(o -> {
-			o.setMake(myCar.getMake());
-			o.setModel(myCar.getModel());
-			o.setYear(myCar.getYear());
+		Optional<Car> optCar = myCarRepo.findById(id);
+		if (optCar.isPresent()) {
 			myCar.setId(id);
-		});
-		return myCarRepo.save(myCar);
+			return myCarRepo.save(myCar);
+		} else {
+			return myCar;
+		}
 	}
 
 	@Override

@@ -54,12 +54,14 @@ public class CarServiceTest {
 	void testUpdate() {
 		//given
 		Car myTestCar = new Car(1994, "CheeseCar", "EdamCheese");
+		Car tempCar = new Car(3L, 1948, "Citroën", "2CV");
 		Long testId = 3L;
-		Car myTestCarReturnedValue = new Car(testId, 1994, "CheeseCar", "EdamCheese");
+		Car myTestCarReturnedValue = new Car(3L, 1994, "CheeseCar", "EdamCheese");
 		//when
+		Mockito.when(testCarRepo.findById(testId)).thenReturn(Optional.of(tempCar));
 		Mockito.when(testCarRepo.save(myTestCar)).thenReturn(myTestCarReturnedValue);
 		//then
-		assertThat(carServ.create(myTestCar)).isEqualTo(myTestCarReturnedValue);
+		assertThat(carServ.update(testId, myTestCar)).isEqualTo(myTestCarReturnedValue);
 		//verify
 		Mockito.verify(testCarRepo, Mockito.times(1)).save(myTestCar);
 		
