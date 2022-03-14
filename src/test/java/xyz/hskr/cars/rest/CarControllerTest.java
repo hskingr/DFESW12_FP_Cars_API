@@ -13,7 +13,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
@@ -30,68 +29,68 @@ public class CarControllerTest {
 	private MockMvc myMock;
 	@Autowired
 	ObjectMapper myMap;
+
 	
+
 	@Test
 	void testCreateItem() throws Exception {
-		//request
+		// request
 		Car create = new Car(1994, "testFord", "testSuperFast");
 		String createJSON = myMap.writeValueAsString(create);
 
-		RequestBuilder myMockRequest = post("/createItem")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(createJSON);
-		//response
+		RequestBuilder myMockRequest = post("/createItem").contentType(MediaType.APPLICATION_JSON).content(createJSON);
+		// response
 		Car created = new Car(7269L, 1994, "testFord", "testSuperFast");
 		String createdJSON = myMap.writeValueAsString(created);
 		ResultMatcher matchStatus = status().is(201);
 		ResultMatcher matchBody = content().json(createdJSON);
-		//test
+		// test
 		myMock.perform(myMockRequest).andExpect(matchStatus).andExpect(matchBody);
 	}
 
 	@Test
 	void testReadItem() throws Exception {
-		//request
+		// request
 		Long id = 10L;
 
 		RequestBuilder myMockRequest = get("/readItem/{id}", id);
-		//response
+		// response
 		Car returnedItem = new Car(10L, 1956, "Chevrolet", "Corvette");
 		String returnedJSON = myMap.writeValueAsString(returnedItem);
 		ResultMatcher matchStatus = status().is(200);
 		ResultMatcher matchBody = content().json(returnedJSON);
-		//test
+		// test
 		myMock.perform(myMockRequest).andExpect(matchStatus).andExpect(matchBody);
 	}
-	
+
+
 	@Test
 	void testUpdateItem() throws Exception {
-		//request
+		// request
 		Car updateItem = new Car(1994, "CheeseCar", "EdamCheese");
 		Long id = 3L;
 		String updateJSON = myMap.writeValueAsString(updateItem);
 
-		RequestBuilder myMockRequest = put("/updateItem/{id}", id)
-				.contentType(MediaType.APPLICATION_JSON)
+		RequestBuilder myMockRequest = put("/updateItem/{id}", id).contentType(MediaType.APPLICATION_JSON)
 				.content(updateJSON);
-		//response
+		// response
 		Car returnedItem = new Car(id, 1994, "CheeseCar", "EdamCheese");
 		String createdJSON = myMap.writeValueAsString(returnedItem);
 		ResultMatcher matchStatus = status().is(201);
 		ResultMatcher matchBody = content().json(createdJSON);
-		//test
+		// test
 		myMock.perform(myMockRequest).andExpect(matchStatus).andExpect(matchBody);
 	}
 
 	@Test
 	void testDeleteItem() throws Exception {
-		//request
+		// request
 		Long id = 10L;
 		RequestBuilder myMockRequest = delete("/deleteItem/{id}", id);
-		//response
+		// response
 		ResultMatcher matchStatus = status().is(202);
 		ResultMatcher matchBody = content().string("true");
-		//test
+		// test
 		myMock.perform(myMockRequest).andExpect(matchStatus).andExpect(matchBody);
 	}
 }
