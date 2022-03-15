@@ -27,26 +27,7 @@
 [![code with love by harrykriches@gmail.com](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-harrykriches@gmail.com-ff1414.svg?style=flat-square)](https://github.com/harrykriches@gmail.com)
 
 </div>
-
-<details open="open">
-<summary>Table of Contents</summary>
-
-- [About](#about)
-  - [Built With](#built-with)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Roadmap](#roadmap)
-- [Support](#support)
-- [Project assistance](#project-assistance)
-- [Contributing](#contributing)
-- [License](#license)
-
-</details>
-
 ---
-
 ## About
 
 > **[?]**
@@ -76,58 +57,23 @@
 
 ## Getting Started
 
-### Prerequisites
-
-> **[?]**
-> What are the project requirements/dependencies?
-
 ### Installation
 
-> **[?]**
-> Describe how to install and get started with the project.
+I find it useful to have a docker network created for the compose stack. The docker-compose file uses `carApiNetwork` so run:
+
+`docker network create carApiNetwork`
+
+Go into the `car-api-docker` folder and build the docker images:
+
+`docker-compose build`
+
+`docker-compose up`
 
 ## Usage
 
 > **[?]**
 > How does one go about using it?
 > Provide various use cases and code examples here.
-
-## Roadmap
-
-See the [open issues](https://github.com/harrykriches@gmail.com/basic-car-api/issues) for a list of proposed features (and known issues).
-
-- [Top Feature Requests](https://github.com/harrykriches@gmail.com/basic-car-api/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
-- [Top Bugs](https://github.com/harrykriches@gmail.com/basic-car-api/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
-- [Newest Bugs](https://github.com/harrykriches@gmail.com/basic-car-api/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-
-## Support
-
-> **[?]**
-> Provide additional ways to contact the project maintainer/maintainers.
-
-Reach out to the maintainer at one of the following places:
-
-- [GitHub issues](https://github.com/harrykriches@gmail.com/basic-car-api/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+)
-- Contact options listed on [this GitHub profile](https://github.com/harrykriches@gmail.com)
-
-## Project assistance
-
-If you want to say **thank you** or/and support active development of Basic Car Api:
-
-- Add a [GitHub Star](https://github.com/harrykriches@gmail.com/basic-car-api) to the project.
-- Tweet about the Basic Car Api.
-- Write interesting articles about the project on [Dev.to](https://dev.to/), [Medium](https://medium.com/) or your personal blog.
-
-Together, we can make Basic Car Api **better**!
-
-## Contributing
-
-First off, thanks for taking the time to contribute! Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make will benefit everybody else and are **greatly appreciated**.
-
-
-Please read [our contribution guidelines](docs/CONTRIBUTING.md), and thank you for being involved!
-
-
 
 ## License
 
