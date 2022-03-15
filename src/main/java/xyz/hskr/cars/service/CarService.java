@@ -1,5 +1,6 @@
 package xyz.hskr.cars.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -54,5 +55,31 @@ public class CarService implements CarServiceInterface<Car> {
 			return true;
 
 	}
+	
+	//custom
+
+	@Override
+	public List<Car> findItemsByYear(int year) {
+		Optional<List> optCar = Optional
+				.ofNullable(myCarRepo
+				.findCarByYear(year));
+		return optCar.get();
+	}
+
+	@Override
+	public List<Car> findItemsByModel(String model) {
+		Optional<List> optCar = Optional.of((myCarRepo
+				.findCarByModel(model)));
+		return optCar.get();
+	}
+
+	@Override
+	public List<Car> findItemsByMake(String make) {
+		Optional<List> optCar = Optional
+				.ofNullable(myCarRepo
+						.findCarByMake(make));
+		return optCar.get();
+	}
+	
 
 }
