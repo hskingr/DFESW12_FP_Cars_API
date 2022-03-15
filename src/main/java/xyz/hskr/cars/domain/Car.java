@@ -5,29 +5,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class Car {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	private int year;
 	private String make;
 	private String model;
-	
-	public Car(int year, String make, String model, Long id) {
-		super();
-		this.id = id;
-		this.year = year;
-		this.make = make;
-		this.model = model;
-	} 
 	
 	public Car(int year, String make, String model) {
 		super();
@@ -35,10 +28,8 @@ public class Car {
 		this.make = make;
 		this.model = model;
 	} 
-//	
-//	public Car() {
-//		
-//	}
+	
+	
 	
 }
 

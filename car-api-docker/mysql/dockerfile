@@ -1,0 +1,6 @@
+FROM mysql
+ADD docker-entrypoint-initdb.d/2_data.sql /docker-entrypoint-initdb.d/2_data.sql
+ADD docker-entrypoint-initdb.d/1_schema.sql /docker-entrypoint-initdb.d/1_schema.sql
+RUN chmod -R 775 /docker-entrypoint-initdb.d
+
+ENV MYSQL_ROOT_PASSWORD mypass

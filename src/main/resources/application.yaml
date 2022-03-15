@@ -1,0 +1,38 @@
+spring:
+    config:
+        activate:
+            on-profile: prod
+    datasource:
+        url: jdbc:mysql://127.0.0.1:3307/cars_db
+        username: root
+        password: password
+    jpa:
+        hibernate.ddl-auto: update
+name: prod-YAML
+environment: production
+enabled: false
+
+---
+spring:
+    config:
+        activate:
+            on-profile: test
+    datasource:
+        url: jdbc:mysql://127.0.0.1:3307/cars_db
+        username: root
+        password: password
+    h2:
+        console:
+            path: /h2-console
+            settings:
+                web-allow-others: true
+    jpa:
+        show-sql: true
+        properties:
+            hibernate.use_sql_comments: true
+            hibernate.format_sql: true
+            hibernate.type: trace
+            hibernate.ddl-auto: update
+name: test-YAML
+environment: testing
+enabled: true
