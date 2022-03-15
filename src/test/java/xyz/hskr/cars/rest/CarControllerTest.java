@@ -23,7 +23,6 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import xyz.hskr.cars.domain.Car;
-import xyz.hskr.demo.domain.Animals;
 
 @SpringBootTest
 @ActiveProfiles("test")
