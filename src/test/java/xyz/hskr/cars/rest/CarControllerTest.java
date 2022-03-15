@@ -7,6 +7,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -20,6 +23,7 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import xyz.hskr.cars.domain.Car;
+import xyz.hskr.demo.domain.Animals;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -90,6 +94,57 @@ public class CarControllerTest {
 		// response
 		ResultMatcher matchStatus = status().is(202);
 		ResultMatcher matchBody = content().string("true");
+		// test
+		myMock.perform(myMockRequest).andExpect(matchStatus).andExpect(matchBody);
+	}
+	
+	@Test
+	void testFindItemsByYear() throws Exception {
+		// request
+		int year = 1950;
+
+		RequestBuilder myMockRequest = get("/findItemsByYear/{year}", year);
+		// response
+		Car returnedItem = new Car(4L, 1950, "Hillman", "Minx Magnificent");
+		List<Car> savedList = new ArrayList<>();
+		savedList.add(returnedItem);
+		String returnedJSON = myMap.writeValueAsString(savedList);
+		ResultMatcher matchStatus = status().is(200);
+		ResultMatcher matchBody = content().json(returnedJSON);
+		// test
+		myMock.perform(myMockRequest).andExpect(matchStatus).andExpect(matchBody);
+	}
+	
+	@Test
+	void testFindItemsByModel() throws Exception {
+		// request
+		String model = "Minx Magnificent";
+
+		RequestBuilder myMockRequest = get("/findItemsByModel/{model}", model);
+		// response
+		Car returnedItem = new Car(4L, 1950, "Hillman", "Minx Magnificent");
+		List<Car> savedList = new ArrayList<>();
+		savedList.add(returnedItem);
+		String returnedJSON = myMap.writeValueAsString(savedList);
+		ResultMatcher matchStatus = status().is(200);
+		ResultMatcher matchBody = content().json(returnedJSON);
+		// test
+		myMock.perform(myMockRequest).andExpect(matchStatus).andExpect(matchBody);
+	}
+	
+	@Test
+	void testFindItemsByMake() throws Exception {
+		// request
+		String make = "Hillman";
+
+		RequestBuilder myMockRequest = get("/findItemsByMake/{make}", make);
+		// response
+		Car returnedItem = new Car(4L, 1950, "Hillman", "Minx Magnificent");
+		List<Car> savedList = new ArrayList<>();
+		savedList.add(returnedItem);
+		String returnedJSON = myMap.writeValueAsString(savedList);
+		ResultMatcher matchStatus = status().is(200);
+		ResultMatcher matchBody = content().json(returnedJSON);
 		// test
 		myMock.perform(myMockRequest).andExpect(matchStatus).andExpect(matchBody);
 	}

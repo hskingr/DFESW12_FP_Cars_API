@@ -1,6 +1,9 @@
 package xyz.hskr.cars.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -207,6 +210,59 @@ public class CarServiceTest {
 		// verify
 		Mockito.verify(testCarRepo, Mockito.times(1)).findById(testId);
 		Mockito.verify(testCarRepo, Mockito.times(1)).deleteById(testId);
+
+	}
+	
+
+	
+	@Test
+	void testFindItemsByYear() throws Exception{
+		// given
+		Car myTestCarReturnedValue = new Car(4L, 1950, "Hillman", "Minx Magnificent");
+		List<Car> myTestResturnedList = new ArrayList<>();
+		myTestResturnedList.add(myTestCarReturnedValue);
+		int year = 1950;
+		// when
+		Mockito.when(testCarRepo.findCarByYear(year)).thenReturn((myTestResturnedList));
+
+		// then
+		assertThat(carServ.findItemsByYear(year)).isEqualTo(myTestResturnedList);
+		// verify
+		Mockito.verify(testCarRepo, Mockito.times(1)).findCarByYear(year);
+
+	}
+	
+	@Test
+	void testFindItemsByModel() throws Exception{
+		// given
+		Car myTestCarReturnedValue = new Car(4L, 1950, "Hillman", "Minx Magnificent");
+		List<Car> myTestResturnedList = new ArrayList<>();
+		myTestResturnedList.add(myTestCarReturnedValue);
+		String model = "Minx Magnificent";
+		// when
+		Mockito.when(testCarRepo.findCarByModel(model)).thenReturn((myTestResturnedList));
+
+		// then
+		assertThat(carServ.findItemsByModel(model)).isEqualTo(myTestResturnedList);
+		// verify
+		Mockito.verify(testCarRepo, Mockito.times(1)).findCarByModel(model);
+
+	}
+	
+	@Test
+	void testFindItemsByMake() throws Exception{
+		// given
+		Car myTestCarReturnedValue = new Car(4L, 1950, "Hillman", "Minx Magnificent");
+		List<Car> myTestResturnedList = new ArrayList<>();
+		myTestResturnedList.add(myTestCarReturnedValue);
+		String make = "Hillman";
+		// when
+		Mockito.when(testCarRepo.findCarByMake(make)).thenReturn((myTestResturnedList));
+
+		// then
+		assertThat(carServ.findItemsByMake(make)).isEqualTo(myTestResturnedList);
+		// verify
+		Mockito.verify(testCarRepo, Mockito.times(1)).findCarByMake(make);
 
 	}
 }
