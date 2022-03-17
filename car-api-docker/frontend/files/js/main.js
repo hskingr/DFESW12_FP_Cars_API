@@ -8,13 +8,11 @@ const testMain = async () => {
 });
 
   const opts = {
-        "Access-Control-Allow-Origin": "*",
-        'Content-Type': 'application/json',
   }
 
   const http = new simpleFETCH;
 
-  await http.get("http://car-api:8080/readItem/8", opts)
+  await http.get("http://localhost:8080/readItem/8", opts)
     .then(data => console.log(data))
     .catch(err => console.log(err));
 
