@@ -3,7 +3,7 @@ services:
   db:
     build: ./mysql
     container_name: api-database
-    restart: unless-stopped
+    restart: on-failure
     environment:
       MYSQL_ROOT_PASSWORD: 'password'
     ports:
