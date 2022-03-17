@@ -12,6 +12,7 @@ services:
       - carApiNetwork
   api:
     container_name: car-api
+    restart: on-failure
     build: ./car-api
     environment:
       - SPRINGPROFILES=prod
