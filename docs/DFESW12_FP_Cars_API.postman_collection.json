@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "745e9965-8919-4c24-80ed-72d115719f83",
+		"name": "DFESW12_FP_Cars_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"modelt\": \"cheese\",\r\n    \"make\" : \"cheese\",\r\n    \"year\" : 1993\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.84.168:8080/createItem/",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"84",
+						"168"
+					],
+					"port": "8080",
+					"path": [
+						"createItem",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "readItem",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.84.168:8080/readById/0",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"84",
+						"168"
+					],
+					"port": "8080",
+					"path": [
+						"readById",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateItem",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"model\": \"cheese\",\r\n    \"make\" : \"cheese\",\r\n    \"year\" : 1993\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.84.168:8080/update/3",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"84",
+						"168"
+					],
+					"port": "8080",
+					"path": [
+						"update",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteItem",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.84.168:8080/deleteItem/3",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"84",
+						"168"
+					],
+					"port": "8080",
+					"path": [
+						"deleteItem",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findItemsByYear",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "findCarByMake",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "findCarByModel",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
