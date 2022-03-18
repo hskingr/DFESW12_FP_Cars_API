@@ -28,7 +28,6 @@ async function crudRead(id) {
 async function crudReadByYear(year) {
   try {
     const http = new simpleFETCH;
-
     const res = await http.get(`http://localhost:8080/findItemsByYear/${year}`, headerOpts)
     return res
   } catch (error) {
@@ -126,7 +125,7 @@ const headerOpts = {
 
 async function methodChanged(x) {
   try {
-   resetUI()
+    resetUI()
     switch (x) {
       case "post":
         select = document.getElementById("apiUrl")
@@ -209,12 +208,7 @@ async function resetUI() {
 
 async function createResponse(resData) {
   try {
-
-    if (resData.length > 0 || resData != null) {
-      if (!resData.length != null) {
-        resData = [resData]
-      }
-
+    if (resData.length > 0) {
 
       resData.forEach(item => {
         const card = document.createElement('div')
@@ -241,9 +235,36 @@ async function createResponse(resData) {
         card.appendChild(cardBody)
         document.getElementById('cards').appendChild(card)
 
-        card.addEventListener('animationend', () => {});
       })
+    } else {
+      item = resData
+
+      const card = document.createElement('div')
+      card.className = 'card animate__animated animate__fadeInDown'
+      card.style = 'width: 18rem'
+      card.style.setProperty('--animate-duration', '0.5s');
+      card.style.setProperty('--animate-delay', '0.5s');
+
+      const cardBody = document.createElement('div')
+      cardBody.className = "card-body"
+      const model = document.createElement('h5')
+      model.className = 'card-title'
+      model.innerHTML = item.model
+      const make = document.createElement('h4')
+      make.className = 'card-subtitle mb-2 text-muted'
+      make.innerHTML = item.make
+      const year = document.createElement('p')
+      year.className = 'card-text'
+      year.innerHTML = `year ${item.year} and id ${item.id}`
+
+      cardBody.appendChild(model)
+      cardBody.appendChild(make)
+      cardBody.appendChild(year)
+      card.appendChild(cardBody)
+      document.getElementById('cards').appendChild(card)
+
     }
+
   } catch (error) {
     console.log(error)
   }
@@ -264,6 +285,7 @@ async function submitRequest() {
       case '2':
         singleInput = document.getElementById("singleMethod")
         await createResponse(await crudReadByYear(singleInput.value))
+
         break
       case '3':
         // crudReadByMake('Model T')
@@ -316,7 +338,7 @@ async function submitRequest() {
   }
 }
 
-async function deletedResponse (resData) {
+async function deletedResponse(resData) {
   try {
     console.log(`deleteResponse ${resData}`)
     resAlert = `<div class="alert alert-success d-flex align-items-center" role="alert">
@@ -325,7 +347,7 @@ async function deletedResponse (resData) {
       Data Deleted!
     </div>
   </div>`
-  document.getElementById('cards').insertAdjacentHTML("afterbegin", resAlert)
+    document.getElementById('cards').insertAdjacentHTML("afterbegin", resAlert)
   } catch (error) {
     console.log(error)
   }

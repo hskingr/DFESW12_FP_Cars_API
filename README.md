@@ -7,29 +7,20 @@
 
 <div align="center">
   Basic Car Api
-  <br />
-  <a href="#about"><strong>Explore the screenshots »</strong></a>
-  <br />
 </div>
 
 <div align="center">
 <br />
 
-[![Project license](https://img.shields.io/github/license/harrykriches@gmail.com/basic-car-api.svg?style=flat-square)](LICENSE)
 
-[![Pull Requests welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](https://github.com/harrykriches@gmail.com/basic-car-api/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
-[![code with love by harrykriches@gmail.com](https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-harrykriches@gmail.com-ff1414.svg?style=flat-square)](https://github.com/harrykriches@gmail.com)
+
 
 </div>
----
+
 ## About
 
-> **[?]**
-> Provide general information about your project here.
-> What problem does it (intend to) solve?
-> What is the purpose of your project?
-> Why did you undertake it?
-> You don't have to answer all the questions -- just the ones relevant to your project.
+
+
 
 <details>
 <summary>Screenshots</summary>
@@ -68,7 +59,15 @@ Go into the `car-api-docker` folder and build the docker images:
 The API was requested as a final project for the Software Development Bootcamp led by QA. This deliverable utilised technologies such as Java, Spring Boot, MySql, Docker and the testing suites Mockito and Junit.
 
 ## How I expected the challenge to go.
+
+I expected to complete the minimum requirements for the project as well as complete some challenges that I set for myself. These extra challenges were to create a frontend for the API and create docker images for each service for easy deployment. I did this because I believe I would have time to complete these extra challenges, but I still accounted for unexpected problems by delegating most of the allocated project time to them.
+
 ## What went well? / What didn't go as planned?
+
+I believed I was able to learn the javascript library React and apply this knowledge towards creating a frontend. Unfortunately I did not foresee how much content was needed to learn as well as implement to my project, which I was unable to do in a couple of days.
+
+I resorted to using an apache web server hosted in a docker container
+
 ## Possible improvements for future revisions of the project.
 ## Screenshots showing your postman requests and the output from the API.
 ## Screenshots of your database to prove that data is being persisted.
