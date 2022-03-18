@@ -1,4 +1,4 @@
-package xyz.hskr.exception;
+package xyz.hskr.cars.exception;
 
 import java.util.NoSuchElementException;
 

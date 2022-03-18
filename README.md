@@ -59,19 +59,24 @@ I find it useful to have a docker network created for the compose stack. The doc
 
 Go into the `car-api-docker` folder and build the docker images:
 
-`docker-compose build`
+`docker-compose build --no-cache`
 
 `docker-compose up`
+
+## Why are we doing this?
+
+The API was requested as a final project for the Software Development Bootcamp led by QA. This deliverable utilised technologies such as Java, Spring Boot, MySql, Docker and the testing suites Mockito and Junit.
+
+## How I expected the challenge to go.
+## What went well? / What didn't go as planned?
+## Possible improvements for future revisions of the project.
+## Screenshots showing your postman requests and the output from the API.
+## Screenshots of your database to prove that data is being persisted.
+## Screenshot of your test results, including coverage report.
+## Link to Jira Board - You must add your trainer(s) as collaborators also.
 
 ## Usage
 
 > **[?]**
 > How does one go about using it?
 > Provide various use cases and code examples here.
-
-## License
-
-This project is licensed under the **Apache Software License 2.0**.
-
-See [LICENSE](LICENSE) for more information.
-

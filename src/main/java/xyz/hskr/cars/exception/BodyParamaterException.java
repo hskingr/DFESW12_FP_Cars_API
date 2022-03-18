@@ -1,4 +1,4 @@
-package xyz.hskr.exception;
+package xyz.hskr.cars.exception;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;

@@ -22,6 +22,19 @@ services:
       - 8080:8080
     networks:
       - carApiNetwork
+  frontend:
+    container_name: api-frontend
+    image: joseluisq/static-web-server:2
+    environment:
+      - SERVER_CORS_ALLOW_ORIGINS=*
+      - SERVER_LOG_LEVEL=debug
+      - SERVER_ROOT=/public
+    volumes:
+      -  ./frontend/files:/public
+    ports:
+      - 3124:80
+    networks:
+      - carApiNetwork
 networks:
    carApiNetwork:
     external: true
