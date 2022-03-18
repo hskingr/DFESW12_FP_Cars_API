@@ -76,9 +76,53 @@ I have not covered all possible exceptions when sending requests through the RES
 
 ## Screenshots showing your postman requests and the output from the API.
 
+---
+### Create Item
+<br>
+<img src="docs/images/createItem.png" title="Home Page" width="100%">
 
+---
+
+### Read Item
+<br>
+<img src="docs/images/readItem.png" title="Home Page" width="100%">
+
+---
+
+### Update Item
+<br>
+<img src="docs/images/updateItem.png" title="Home Page" width="100%">
+
+---
+
+### Delete Item
+<br>
+<img src="docs/images/deleteItem.png" title="Home Page" width="100%">
+
+---
+
+### Read Items By Year
+<br>
+<img src="docs/images/findItemsByYear.png" title="Home Page" width="100%">
+
+---
+
+### Read Items By Make
+<br>
+<img src="docs/images/findItemsByMake.png" title="Home Page" width="100%">
+
+---
+
+### Read Items By Model
+<br>
+<img src="docs/images/findItemsByModel.png" title="Home Page" width="100%">
+
+---
 
 ## Screenshots of your database to prove that data is being persisted.
+
+
+
 ## Screenshot of your test results, including coverage report.
 ## Link to Jira Board - You must add your trainer(s) as collaborators also.
 
