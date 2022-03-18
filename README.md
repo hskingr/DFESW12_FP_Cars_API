@@ -17,12 +17,20 @@ Run the stack:
 
 `docker-compose up`
 
+You can access the frontend at
+
+`http://localhost:3241`
+
+You can make API calls to
+
+ `http://localhost:8080`
+
 ### Things to Know
 
 I have succesfully deployed this project on multiple machines and accessed the frontend through the provided IP address and Port.
 
 ### docker-compose (recommended)
-
+<br>
 
 ```yaml
 ---
@@ -75,15 +83,26 @@ networks:
 
 Container images are configured using parameters passed at runtime (such as those above). These parameters are separated by a colon and indicate `<external>:<internal>` respectively. For example, `-p 8080:80` would expose port `80` from inside the container to be accessible from the host's IP on port `8080` outside the container.
 
-| Parameter | Function |
+## api
+
+| Environment Variable | Function |
 | :----: | --- |
-| `-p 7878` | The port for the Radarr webinterface |
-| `-e PUID=1000` | for UserID - see below for explanation |
-| `-e PGID=1000` | for GroupID - see below for explanation |
-| `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London, this is required for Radarr |
-| `-v /config` | Database and Radarr configs |
-| `-v /movies` | Location of Movie library on disk (See note in Application setup) |
-| `-v /downloads` | Location of download managers output directory (See note in Application setup) |
+| `SPRINGPROFILES=prod` | Connects the jar file to the mysql database for persistent connection.|
+| `SPRINGPROFILES=test` | Connects the jar file to a temporary H2 databse which will reset everytime the container is restarted.|
+
+## frontend
+
+| Environment Variable | Function |
+| :----: | --- |
+| ` SERVER_CORS_ALLOW_ORIGINS=* ` |This is enabled for development purposes, you can refer to the original <a href="https://github.com/joseluisq/static-web-server"> image </a> for further information.|
+| `SERVER_LOG_LEVEL=debug` | This is enabled for development purposes, you can refer to the original <a href="https://github.com/joseluisq/static-web-server"> image </a> for further information. |
+|  `SERVER_ROOT=/public` | The default webroot directory. This is mapped in the volume bindings in the provided compose file. Make sure the mappings all correlate if you change this value.|
+
+## db
+
+| Environment Variable | Function |
+| :----: | --- |
+|  `MYSQL_ROOT_PASSWORD: 'password'` | sets up the root password for the mysql container.
 
 ## Why are we doing this?
 
@@ -104,6 +123,45 @@ One particular issue I was unable to resolve was expecting exceptions when perfo
 ## Possible improvements for future revisions of the project.
 
 I have not covered all possible exceptions when sending requests through the REST API. This means that the responses that I receive in the frontend are not handled equally. I would prefer to create more exceptions with greater detail added, so I am able to provide meaningful feedback when a user makes an error.
+
+## Frontend Screenshots
+
+### Create Item
+<br>
+<img src="docs/images/frontend_create.png" title="Home Page" width="100%">
+
+---
+### Read Item
+<br>
+<img src="docs/images/frontend_read.png" title="Home Page" width="100%">
+
+---
+### Update Item
+<br>
+<img src="docs/images/frontend_update.png" title="Home Page" width="100%">
+
+---
+### Delete Item
+<br>
+<img src="docs/images/frontend_delete.png" title="Home Page" width="100%">
+
+---
+### Find Items By Year
+<br>
+<img src="docs/images/frontend_findItemsByYear.png" title="Home Page" width="100%">
+
+---
+### Find Items By Make
+<br>
+<img src="docs/images/frontend_findItemsByMake.png" title="Home Page" width="100%">
+
+---
+### Find Items By Model
+<br>
+<img src="docs/images/frontend_findItemsByModel.png" title="Home Page" width="100%">
+
+---
+
 
 ## Postman Screenshots
 
@@ -177,4 +235,11 @@ I attached a shell to the mysql docker container and checked executed some comma
 
 
 ## Screenshot of your test results, including coverage report.
-   <a href="https://wessexhurst.atlassian.net/jira/software/projects/DFPA/boards/2/roadmap?shared=&atlOrigin=eyJpIjoiMDk2ODIzMmMwMjI4NDVmZWIyOTMzZmVmZDVkYjJjMGMiLCJwIjoiaiJ9">  	Link to Jira Board </a>
+
+### Coverage of Tests
+<br>
+<img src="docs/images/coverage.png" title="Home Page" width="100%">
+
+---
+
+<a href="https://wessexhurst.atlassian.net/jira/software/projects/DFPA/boards/2/roadmap?shared=&atlOrigin=eyJpIjoiMDk2ODIzMmMwMjI4NDVmZWIyOTMzZmVmZDVkYjJjMGMiLCJwIjoiaiJ9">  	Link to Jira Board </a>
