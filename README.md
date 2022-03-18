@@ -167,7 +167,7 @@ I have not covered all possible exceptions when sending requests through the RES
 
 ## Postman Screenshots
 
-Link to Postman Collection is located in the [documentation]("docs/DFESW12_FP_Cars_API.postman_collection") folder
+Link to Postman Collection is located in the [documentation](docs/DFESW12_FP_Cars_API.postman_collection.json) folder
 
 ---
 ### Create Item
