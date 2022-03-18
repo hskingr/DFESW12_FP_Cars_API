@@ -14,9 +14,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 
 import xyz.hskr.cars.domain.Car;
+import xyz.hskr.cars.exception.BodyParamaterException;
+import xyz.hskr.cars.exception.NoSuchElementFoundException;
 import xyz.hskr.cars.repo.CarRepo;
-import xyz.hskr.exception.BodyParamaterException;
-import xyz.hskr.exception.NoSuchElementFoundException;
 
 @SpringBootTest
 @ActiveProfiles("test")
