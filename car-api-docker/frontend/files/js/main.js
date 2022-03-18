@@ -16,10 +16,10 @@ async function crudRead(id) {
     const http = new simpleFETCH;
     const res = await http.get(`http://localhost:8080/readItem/${id}`, headerOpts)
 
+    console.log(res.error)
     if (res.error != null) throw new error
-
-
     return res
+
   } catch (error) {
     sendErr(error)
   }
@@ -51,12 +51,9 @@ async function crudReadByModel(model) {
 async function crudReadByMake(make) {
   try {
     const http = new simpleFETCH;
-    console.log(make)
     const res = await http.get(`http://localhost:8080/findItemsByMake/${make}`, headerOpts)
-    console.log(res)
     return res
   } catch (error) {
-    console.log(error)
     sendErr(error)
   }
 }
@@ -66,11 +63,12 @@ async function crudUpdate(id, data) {
     const http = new simpleFETCH;
 
     const res = await http.put(`http://localhost:8080/updateItem/${id}`, data, headerOpts)
-    console.log(res)
+    if (res.error != null) throw new error
+    return res
     return res
   } catch (error) {
     console.log(error)
-    sendErr(error)
+    sendUpdateErr(error)
   }
 }
 
@@ -79,12 +77,26 @@ async function crudDelete(id) {
     const http = new simpleFETCH;
 
     const res = await http.delete(`http://localhost:8080/deleteItem/${id}`, headerOpts)
-    console.log(`deleted ${res}`)
+
+    console.log(res)
+
     return res
   } catch (error) {
-    console.log(error)
     sendErr(error)
   }
+}
+
+async function sendUpdateErr(error) {
+  const errorMess = `<div class="alert alert-danger d-flex align-items-center" id="alert" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </svg>
+    <div>
+
+      Update Record Error
+    </div>
+  </div>`
+  document.getElementById('cards').insertAdjacentHTML("afterbegin", errorMess)
 }
 
 async function sendErr(error) {
@@ -93,11 +105,10 @@ async function sendErr(error) {
       <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
     </svg>
     <div>
-    ${error.error}
       No Results Found
     </div>
   </div>`
-    document.getElementById('cards').insertAdjacentHTML("afterbegin", errorMess)
+  document.getElementById('cards').insertAdjacentHTML("afterbegin", errorMess)
 }
 
 
@@ -115,12 +126,7 @@ const headerOpts = {
 
 async function methodChanged(x) {
   try {
-    document.getElementById('cards').innerHTML = ''
-    console.log(document.getElementById('alert'))
-    if (document.getElementById('alert') != null) {
-      console.log('hey')
-      document.getElementById('alert').removeChild()
-    }
+   resetUI()
     switch (x) {
       case "post":
         select = document.getElementById("apiUrl")
@@ -178,7 +184,6 @@ async function methodChanged(x) {
         const option6 = document.createElement('option')
         option6.value = 6
         option6.innerHTML = `http://localhost:8080/deleteItem/ `
-        console.log(x)
         select.appendChild(option6)
         document.getElementsByClassName('firstRowInput')[0].classList.remove('d-none')
         document.getElementsByClassName('firstRowInput')[1].classList.remove('d-none')
@@ -190,14 +195,27 @@ async function methodChanged(x) {
 
 }
 
+async function resetUI() {
+  try {
+    document.getElementById('cards').innerHTML = ''
+    if (document.getElementById('alert') != null) {
+
+      document.getElementById('alert').removeChild()
+    }
+  } catch (error) {
+
+  }
+}
+
 async function createResponse(resData) {
   try {
-    console.log(resData)
 
     if (resData.length > 0 || resData != null) {
       if (!resData.length != null) {
         resData = [resData]
       }
+
+
       resData.forEach(item => {
         const card = document.createElement('div')
         card.className = 'card animate__animated animate__fadeInDown'
@@ -223,28 +241,18 @@ async function createResponse(resData) {
         card.appendChild(cardBody)
         document.getElementById('cards').appendChild(card)
 
-        card.addEventListener('animationend', () => {
-        console.log('hey')
-        });
+        card.addEventListener('animationend', () => {});
       })
     }
   } catch (error) {
-    const errorMess = `<div class="alert alert-primary d-flex align-items-center" role="alert">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-    </svg>
-    <div>
-    ${error.error}
-      No Results Found
-    </div>
-  </div>`
-    document.getElementById('cards').insertAdjacentHTML("afterbegin", errorMess)
+    console.log(error)
   }
 }
 
 async function submitRequest() {
 
   try {
+    resetUI()
     chosenOpt = document.getElementById("apiUrl").value
 
     switch (chosenOpt) {
@@ -272,7 +280,7 @@ async function submitRequest() {
         singleInput = document.getElementById("singleMethod")
         const updateData = {
           year: document.getElementById("inputYear").value,
-          model:document.getElementById("inputModel").value,
+          model: document.getElementById("inputModel").value,
           make: document.getElementById("inputMake").value
         }
         await createResponse(await crudUpdate(singleInput.value, updateData))
@@ -282,19 +290,20 @@ async function submitRequest() {
         break
       case '6':
         singleInput = document.getElementById("singleMethod")
-        await (await crudDelete(singleInput.value))
+        await deletedResponse((await crudDelete(singleInput.value)))
+
         // crudDelete(8)
         break
       case '7':
         //need to create a body
 
 
-                const createData = {
-                  year: document.getElementById("inputYear").value,
-                  model: document.getElementById("inputModel").value,
-                  make: document.getElementById("inputMake").value
-                }
-                console.log(createData)
+        const createData = {
+          year: document.getElementById("inputYear").value,
+          model: document.getElementById("inputModel").value,
+          make: document.getElementById("inputMake").value
+        }
+        console.log(createData)
         await createResponse(await crudCreate(createData))
 
         // crudCreate(createData)
@@ -307,6 +316,20 @@ async function submitRequest() {
   }
 }
 
+async function deletedResponse (resData) {
+  try {
+    console.log(`deleteResponse ${resData}`)
+    resAlert = `<div class="alert alert-success d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+    <div>
+      Data Deleted!
+    </div>
+  </div>`
+  document.getElementById('cards').insertAdjacentHTML("afterbegin", resAlert)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 
 
