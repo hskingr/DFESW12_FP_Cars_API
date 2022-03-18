@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "745e9965-8919-4c24-80ed-72d115719f83",
+		"_postman_id": "50c05d3b-f921-459e-b800-bbb7647d2045",
 		"name": "DFESW12_FP_Cars_API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"modelt\": \"cheese\",\r\n    \"make\" : \"cheese\",\r\n    \"year\" : 1993\r\n}",
+					"raw": "{\r\n    \"model\": \"Cheddar\",\r\n    \"make\" : \"Ford\",\r\n    \"year\" : 1990\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,13 +20,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://192.168.84.168:8080/createItem/",
+					"raw": "http://localhost:8080/createItem/",
 					"protocol": "http",
 					"host": [
-						"192",
-						"168",
-						"84",
-						"168"
+						"localhost"
 					],
 					"port": "8080",
 					"path": [
@@ -43,18 +40,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://192.168.84.168:8080/readById/0",
+					"raw": "http://localhost:8080/readItem/90",
 					"protocol": "http",
 					"host": [
-						"192",
-						"168",
-						"84",
-						"168"
+						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"readById",
-						"0"
+						"readItem",
+						"90"
 					]
 				}
 			},
@@ -75,17 +69,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://192.168.84.168:8080/update/3",
+					"raw": "http://localhost:8080/updateItem/3",
 					"protocol": "http",
 					"host": [
-						"192",
-						"168",
-						"84",
-						"168"
+						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"update",
+						"updateItem",
 						"3"
 					]
 				}
@@ -98,13 +89,10 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://192.168.84.168:8080/deleteItem/3",
+					"raw": "http://localhost:8080/deleteItem/3",
 					"protocol": "http",
 					"host": [
-						"192",
-						"168",
-						"84",
-						"168"
+						"localhost"
 					],
 					"port": "8080",
 					"path": [
@@ -119,7 +107,19 @@
 			"name": "findItemsByYear",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/findItemsByYear/1990",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"findItemsByYear",
+						"1990"
+					]
+				}
 			},
 			"response": []
 		},
@@ -127,7 +127,19 @@
 			"name": "findCarByMake",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/findItemsByMake/Ford",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"findItemsByMake",
+						"Ford"
+					]
+				}
 			},
 			"response": []
 		},
@@ -135,7 +147,19 @@
 			"name": "findCarByModel",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/findItemsByModel/Thunderbird",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"findItemsByModel",
+						"Thunderbird"
+					]
+				}
 			},
 			"response": []
 		}
