@@ -120,6 +120,8 @@ I resorted to using an apache web server hosted in a docker container and use a 
 
 One particular issue I was unable to resolve was expecting exceptions when performing tests of the service class in the Java project. This may be a configuration error on my end, but I was able to find a work around by throwing an exception and then asserting it inside the catch of a try/catch statement. This worked fine, but was not a graceful implementation of asserting the exception in my opinion.
 
+I managed to successfully implement everything I planned to do in the end. The final deliverables regarding the extra tasks could have a lot of improvemnets made. This was not a mistake on my end as I was aware that creating a production ready frontend from scratch was not feasible in the timeframe we were provided.
+
 ## Possible improvements for future revisions of the project.
 
 I have not covered all possible exceptions when sending requests through the REST API. This means that the responses that I receive in the frontend are not handled equally. I would prefer to create more exceptions with greater detail added, so I am able to provide meaningful feedback when a user makes an error.
@@ -239,6 +241,12 @@ I attached a shell to the mysql docker container and checked executed some comma
 ### Coverage of Tests
 <br>
 <img src="docs/images/coverage.png" title="Home Page" width="100%">
+
+---
+
+### Tests Passed
+<br>
+<img src="docs/images/tests_passed.png" title="Home Page" width="100%">
 
 ---
 
