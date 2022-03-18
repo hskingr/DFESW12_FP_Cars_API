@@ -10,6 +10,8 @@ services:
       - '3310:3306'
     networks:
       - carApiNetwork
+    volumes:
+      - ./mysql/data:/var/lib/mysql
   api:
     container_name: car-api
     restart: on-failure
