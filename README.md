@@ -27,7 +27,7 @@ You can make API calls to
 
 ### Things to Know
 
-I have succesfully deployed this project on multiple machines and accessed the frontend through the provided IP address and Port.
+I have successfully deployed this project on multiple machines and accessed the frontend through the provided IP address and Port.
 
 ### docker-compose (recommended)
 <br>
@@ -88,7 +88,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | Environment Variable | Function |
 | :----: | --- |
 | `SPRINGPROFILES=prod` | Connects the jar file to the mysql database for persistent connection.|
-| `SPRINGPROFILES=test` | Connects the jar file to a temporary H2 databse which will reset everytime the container is restarted.|
+| `SPRINGPROFILES=test` | Connects the jar file to a temporary H2 database which will reset every time the container is restarted.|
 
 ## frontend
 
@@ -120,7 +120,7 @@ I resorted to using an apache web server hosted in a docker container and use a 
 
 One particular issue I was unable to resolve was expecting exceptions when performing tests of the service class in the Java project. This may be a configuration error on my end, but I was able to find a work around by throwing an exception and then asserting it inside the catch of a try/catch statement. This worked fine, but was not a graceful implementation of asserting the exception in my opinion.
 
-I managed to successfully implement everything I planned to do in the end. The final deliverables regarding the extra tasks could have a lot of improvemnets made. This was not a mistake on my end as I was aware that creating a production ready frontend from scratch was not feasible in the timeframe we were provided.
+I managed to successfully implement everything I planned to do in the end. The final deliverables regarding the extra tasks could have a lot of improvements made. This was not a mistake on my end as I was aware that creating a production ready frontend from scratch was not feasible in the time frame we were provided.
 
 ## Possible improvements for future revisions of the project.
 
@@ -233,8 +233,11 @@ I attached a shell to the mysql docker container and checked executed some comma
 <img src="docs/images/checkIfCreated.png" title="Home Page" width="100%">
 
 ---
+### ERD
+<br>
+<img src="docs/images/erd.png" title="Home Page" width="100%">
 
-
+---
 
 ## Screenshot of your test results, including coverage report.
 
@@ -249,5 +252,20 @@ I attached a shell to the mysql docker container and checked executed some comma
 <img src="docs/images/tests_passed.png" title="Home Page" width="100%">
 
 ---
+
+## Risk Assessment
+
+### High Risk, High Impact
+ - My Hardware is not new, this means that components such as my Hard Drive are more likely to fail causing data loss.
+> This can be prevented by replicating data to other physical locations.
+### High Risk, Low Impact
+ - Due to terrible ergonomics of my desk station, I frequently suffer from pains in my wrists. This could become more frequent, causing me to take more breaks and delaying the delivery of the final product.
+ > This could be mitigated by budgeting for equipment that can help improve posture and reduce physical strain. This request has been escalated to management for consideration.
+### Low Risk, High Impact
+ - A terrorist organisation could blow up a small nuclear device close to the center of London. As I live close to the center, I might be exposed to the blast or radiation from the fallout. Power outages may occur and potential destruction of property.
+ > There really is not a way to prevent this. As the most successful terrorist plots are not known until they are executed and by then it is too late to act.
+### Low Risk, Low Impact
+ - Mismanagement of files and git repos could lead to confusion of in the development process. This means that data loss could occur or untraceable errors.
+ > Proper checks made when branching out and frequent merges to the dev branch may help in mitigating confusion of the codebase.
 
 <a href="https://wessexhurst.atlassian.net/jira/software/projects/DFPA/boards/2/roadmap?shared=&atlOrigin=eyJpIjoiMDk2ODIzMmMwMjI4NDVmZWIyOTMzZmVmZDVkYjJjMGMiLCJwIjoiaiJ9">  	Link to Jira Board </a>
