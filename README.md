@@ -66,10 +66,18 @@ I expected to complete the minimum requirements for the project as well as compl
 
 I believed I was able to learn the javascript library React and apply this knowledge towards creating a frontend. Unfortunately I did not foresee how much content was needed to learn as well as implement to my project, which I was unable to do in a couple of days.
 
-I resorted to using an apache web server hosted in a docker container
+I resorted to using an apache web server hosted in a docker container and use a volume bind mount to point towards the root web directory. I used javascript to make fetch requests on the frontend to the exposed port of the database in localhost. I found it difficult to work around issues with CORS, especially trying to resolve docker hostnames as internal IP addresses. Using localhost as a url seemed to work, which is acceptable considering this project is not made to be exposed to the internet for public API access.
+
+One particular issue I was unable to resolve was expecting exceptions when performing tests of the service class in the Java project. This may be a configuration error on my end, but I was able to find a work around by throwing an exception and then asserting it inside the catch of a try/catch statement. This worked fine, but was not a graceful implementation of asserting the exception in my opinion.
 
 ## Possible improvements for future revisions of the project.
+
+I have not covered all possible exceptions when sending requests through the REST API. This means that the responses that I receive in the frontend are not handled equally. I would prefer to create more exceptions with greater detail added, so I am able to provide meaningful feedback when a user makes an error.
+
 ## Screenshots showing your postman requests and the output from the API.
+
+
+
 ## Screenshots of your database to prove that data is being persisted.
 ## Screenshot of your test results, including coverage report.
 ## Link to Jira Board - You must add your trainer(s) as collaborators also.
